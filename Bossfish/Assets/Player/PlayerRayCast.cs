@@ -26,7 +26,7 @@ public class PlayerRayCast : MonoBehaviour
         {
             if(hit.collider.TryGetComponent<Interactive>(out Interactive interactive)) 
             {
-                interactive.Interaction();
+                interactive.Interaction(gameObject);
             }
         }
         Debug.Log("Interact pressed");
@@ -36,6 +36,6 @@ public class PlayerRayCast : MonoBehaviour
     {
         Gizmos.color = Color.red;
         if (cam != null)
-        Gizmos.DrawLine(cam.position, cam.forward * rayLength);
+        Gizmos.DrawLine(cam.position, cam.position + cam.forward * rayLength);
     }
 }

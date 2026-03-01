@@ -4,7 +4,7 @@ using UnityEngine.Rendering.HighDefinition;
 public class Float : MonoBehaviour
 {
     [Header("References")]
-    public WaterSurface targetSurface;
+    public WaterSystems waterSystems;
     public Rigidbody rb;
     public Transform[] floatPoints;
 
@@ -16,9 +16,6 @@ public class Float : MonoBehaviour
     public float centerOfMassOffset = -0.5f;
     public float angularDragValue = 3f;
     public float maxAngularVelocity = 10f;
-
-    WaterSearchParameters searchParameters = new WaterSearchParameters();
-    WaterSearchResult searchResult = new WaterSearchResult();
 
     private void Start()
     {
@@ -35,32 +32,23 @@ public class Float : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (targetSurface == null || floatPoints.Length == 0)
+        if (waterSystems == null || floatPoints.Length == 0)
             return;
 
         for (int i = 0; i < floatPoints.Length; i++)
         {
-            // Пошук рівня води в конкретній точці
-            searchParameters.startPositionWS = floatPoints[i].position;
-            searchParameters.targetPositionWS = floatPoints[i].position;
-            searchParameters.error = 0.01f;
-            searchParameters.maxIterations = 8;
+            float waterLevel = waterSystems.GetWaterLevel(floatPoints[i].position);
+            float depth = waterLevel - floatPoints[i].position.y;
 
-            if (targetSurface.ProjectPointOnWaterSurface(searchParameters, out searchResult))
+            if (depth > 0f)
             {
-                float waterLevel = searchResult.projectedPositionWS.y;
-                float depth = waterLevel - floatPoints[i].position.y;
+                float buoyantForce = buoyancy * depth;
 
-                if (depth > 0f)
-                {
-                    float buoyantForce = buoyancy * depth;
-
-                    rb.AddForceAtPosition(
-                        Vector3.up * buoyantForce,
-                        floatPoints[i].position,
-                        ForceMode.Force
-                    );
-                }
+                rb.AddForceAtPosition(
+                    Vector3.up * buoyantForce,
+                    floatPoints[i].position,
+                    ForceMode.Force
+                );
             }
         }
 

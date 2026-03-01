@@ -26,7 +26,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f8f999c28568f9d459f1628f18134165, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.61
+      value: 0.37
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f8f999c28568f9d459f1628f18134165, type: 3}
       propertyPath: m_LocalPosition.z
@@ -63,6 +63,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: f8f999c28568f9d459f1628f18134165, type: 3}
       propertyPath: m_Name
       value: Virtual ship
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f8f999c28568f9d459f1628f18134165, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5364064028650699294, guid: f8f999c28568f9d459f1628f18134165, type: 3}
       propertyPath: 'm_Bones.Array.data[1]'
@@ -119,6 +123,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f8f999c28568f9d459f1628f18134165, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1434320246548353017}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f8f999c28568f9d459f1628f18134165, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6829733603622066510}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f8f999c28568f9d459f1628f18134165, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 202696600629152650}
   m_SourcePrefab: {fileID: 100100000, guid: f8f999c28568f9d459f1628f18134165, type: 3}
 --- !u!1 &4919764256782241596 stripped
 GameObject:
@@ -132,7 +142,7 @@ MeshCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4919764256782241596}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 976691e2f94bb464cb63e8edb49cba11, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -169,3 +179,44 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 696506293384616337, guid: 3c238fd46da84914fa8d7fb6b7898ee5, type: 3}
+--- !u!114 &6829733603622066510
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4919764256782241596}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 948759da36b82d24f94eff61571933c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VirtualShip
+  rb: {fileID: 202696600629152650}
+  ship: {fileID: 0}
+--- !u!54 &202696600629152650
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4919764256782241596}
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0

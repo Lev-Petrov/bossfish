@@ -4,26 +4,24 @@ public class LadderScript : Interactive
 {
     public Transform landingPoint;
     public Transform boardPoint;
-
-    PlayerSwim player;
+    VirtualShip ship;
 
     private void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerSwim>();
+        ship = FindAnyObjectByType<VirtualShip>();
     }
 
-
-    public override void Interaction()
+    public override void Interaction(GameObject interactor)
     {
-        if(player != null) {return;}
+        if (ship == null) { Debug.Log("No virtual ship"); return; }
 
-        if (player.isSwimming)
+        if (ship.onTheBoard.Contains(interactor.GetComponent<Rigidbody>()))
         {
-            player.transform.position = boardPoint.position;
+            interactor.transform.position = landingPoint.position;
         }
         else
         {
-            player.transform.position = landingPoint.position;
+            interactor.transform.position = boardPoint.position;
         }
     }
 }

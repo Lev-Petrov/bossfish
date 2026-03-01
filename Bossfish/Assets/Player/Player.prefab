@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1953657229441786988}
   - component: {fileID: 7032269335549552290}
   - component: {fileID: 4857996920892616048}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -245,11 +245,12 @@ GameObject:
   - component: {fileID: 1895392258467607794}
   - component: {fileID: 2847564799105827713}
   - component: {fileID: 8173037666897565583}
+  - component: {fileID: 155023350106683144}
   - component: {fileID: 371917847388126210}
   - component: {fileID: 4408287263278602958}
   - component: {fileID: 5569181556459070310}
   - component: {fileID: 7505531175043903660}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -359,8 +360,8 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9026813475463045080}
   serializedVersion: 5
-  m_Mass: 10
-  m_LinearDamping: 0
+  m_Mass: 1
+  m_LinearDamping: 1
   m_AngularDamping: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
@@ -378,6 +379,103 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
+--- !u!82 &155023350106683144
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9026813475463045080}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 0.628
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!114 &371917847388126210
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -408,7 +506,7 @@ MonoBehaviour:
       m_Flags: 0
     m_Flags: 0
   cam: {fileID: 7158166656381121583}
-  mouseSensitivity: 0.5
+  mouseSensitivity: 0.25
 --- !u!114 &4408287263278602958
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -471,7 +569,15 @@ MonoBehaviour:
       m_Flags: 8
     m_Flags: 0
   rb: {fileID: 8173037666897565583}
-  speed: 3
+  speed: 5
+  canWalk: 1
+  audioSource: {fileID: 155023350106683144}
+  stepsSounds:
+  - {fileID: 8300000, guid: 39f5675d480d5b34d9e9050dc30a936b, type: 3}
+  - {fileID: 8300000, guid: b18fc93b727512a47b5069aa68957e99, type: 3}
+  - {fileID: 8300000, guid: d15381ac796a726478e4294af069ee61, type: 3}
+  - {fileID: 8300000, guid: c54ecb73fd0a73f4683bacf4b277143e, type: 3}
+  timeBtwSteps: 3
 --- !u!114 &5569181556459070310
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -484,7 +590,83 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb26894dc5be4654babc09b13d17fdd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerSwim
-  isSwimming: 0
+  swimAction:
+    m_Name: Swim
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 8e55246a-a96d-476a-9afb-ee36568f020f
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 3D Vector
+      m_Id: 7ca76ce3-5540-426a-bc5b-beaa57b73c7d
+      m_Path: 3DVector
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Swim
+      m_Flags: 4
+    - m_Name: up
+      m_Id: 19a2c3a9-c8e2-4baa-99f3-0e90b2cfc809
+      m_Path: <Keyboard>/space
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Swim
+      m_Flags: 8
+    - m_Name: down
+      m_Id: 1b972acc-db1a-4e72-a991-9d75f8b6f81e
+      m_Path: <Keyboard>/shift
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Swim
+      m_Flags: 8
+    - m_Name: left
+      m_Id: 9de8f772-7138-4a2a-9fa1-7d607b56ec35
+      m_Path: <Keyboard>/a
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Swim
+      m_Flags: 8
+    - m_Name: right
+      m_Id: 9dff0b77-bb6c-4176-bf61-8323e14e057c
+      m_Path: <Keyboard>/d
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Swim
+      m_Flags: 8
+    - m_Name: forward
+      m_Id: 851caf6e-f221-46aa-805f-50ac2c24311c
+      m_Path: <Keyboard>/w
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Swim
+      m_Flags: 8
+    - m_Name: backward
+      m_Id: 0dc2138e-0005-4858-affa-6526452c637e
+      m_Path: <Keyboard>/s
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Swim
+      m_Flags: 8
+    m_Flags: 0
+  rb: {fileID: 8173037666897565583}
+  waterSystems: {fileID: 0}
+  playerCamera: {fileID: 7158166656381121583}
+  playerWalk: {fileID: 4408287263278602958}
+  speed: 10
+  audioSource: {fileID: 155023350106683144}
+  divingSounds:
+  - {fileID: 8300000, guid: caa92f18ba40ea247b42ecc1ad930eaa, type: 3}
+  - {fileID: 8300000, guid: 0b8278824fa4db844a7f90aeeeade186, type: 3}
+  emergesSounds:
+  - {fileID: 8300000, guid: b14ddcb5fd5df4d48bcbd4fcf3aa4bea, type: 3}
+  - {fileID: 8300000, guid: e18ea664c8d1ad747a6d38a436d9663a, type: 3}
 --- !u!114 &7505531175043903660
 MonoBehaviour:
   m_ObjectHideFlags: 0

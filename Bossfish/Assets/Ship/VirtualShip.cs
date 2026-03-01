@@ -6,7 +6,7 @@ public class VirtualShip : MonoBehaviour
 {
     public Rigidbody rb; // is kinematic
     public Rigidbody ship;
-    List<Rigidbody> onTheBoard = new List<Rigidbody>();
+    [HideInInspector] public List<Rigidbody> onTheBoard = new List<Rigidbody>();
 
     private void FixedUpdate()
     {
