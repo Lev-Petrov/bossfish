@@ -5,6 +5,7 @@ public class PlayerRayCast : MonoBehaviour
 {
     public InputAction interactAction;
     public Transform cam;
+    public float rayLength;
 
     private void OnEnable()
     {
@@ -21,7 +22,7 @@ public class PlayerRayCast : MonoBehaviour
     private void OnInteract(InputAction.CallbackContext context)
     {
         RaycastHit hit;
-        if (Physics.Raycast(cam.position, cam.forward, out hit, 2))
+        if (Physics.Raycast(cam.position, cam.forward, out hit, rayLength))
         {
             if(hit.collider.TryGetComponent<Interactive>(out Interactive interactive)) 
             {
@@ -34,6 +35,7 @@ public class PlayerRayCast : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawLine(cam.position, cam.forward * 2);
+        if (cam != null)
+        Gizmos.DrawLine(cam.position, cam.forward * rayLength);
     }
 }

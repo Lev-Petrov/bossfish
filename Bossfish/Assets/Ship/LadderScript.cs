@@ -2,20 +2,28 @@ using UnityEngine;
 
 public class LadderScript : Interactive
 {
-    public PlayerSwim playerSwim;
     public Transform landingPoint;
     public Transform boardPoint;
+
+    PlayerSwim player;
+
+    private void Start()
+    {
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerSwim>();
+    }
+
+
     public override void Interaction()
     {
-        if (playerSwim)
+        if(player != null) {return;}
+
+        if (player.isSwimming)
         {
-            playerSwim.transform.SetParent(null);
-            playerSwim.transform.position = boardPoint.position;
+            player.transform.position = boardPoint.position;
         }
         else
         {
-            playerSwim.transform.SetParent(null);
-            playerSwim.transform.position = landingPoint.position;
+            player.transform.position = landingPoint.position;
         }
     }
 }
