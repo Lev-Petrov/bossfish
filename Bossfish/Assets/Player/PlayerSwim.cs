@@ -12,10 +12,12 @@ public class PlayerSwim : MonoBehaviour
     public Transform playerCamera;
     public PlayerWalk playerWalk;
     public float speed;
-    bool isDived = true;
+    bool isDived;
+
+    float depth;
 
     [Header("Sound Settings")]
-    public AudioSource audioSource;
+    public AudioSource swimSource;
     public AudioResource[] divingSounds;
     public AudioResource[] emergesSounds;
 
@@ -30,9 +32,9 @@ public class PlayerSwim : MonoBehaviour
     private void Update()
     {
         float waterLevel = waterSystems.GetWaterLevel(transform.position);
-        float depth = waterLevel - transform.position.y;
+        depth = waterLevel - transform.position.y;
 
-        if (depth > 0 && !isDived)
+        if (depth > 0.1f && !isDived)
         {
             rb.useGravity = false;
             isDived = true;
@@ -40,7 +42,7 @@ public class PlayerSwim : MonoBehaviour
 
             if(playerWalk != null) {playerWalk.canWalk = false;}
         }
-        else if (depth < 0 && isDived)
+        else if (depth < -0.1f && isDived)
         {
             rb.useGravity = true;
             isDived = false;
@@ -53,15 +55,15 @@ public class PlayerSwim : MonoBehaviour
     private void PlayDivingSound()
     {
         int index = Random.Range(0, divingSounds.Length);
-        audioSource.resource = divingSounds[index];
-        audioSource.Play();
+        swimSource.resource = divingSounds[index];
+        swimSource.Play();
     }
 
     private void PlayerEmergesSound()
     {
         int index = Random.Range(0, emergesSounds.Length);
-        audioSource.resource = emergesSounds[index];
-        audioSource.Play();
+        swimSource.resource = emergesSounds[index];
+        swimSource.Play();
     }
 
     private void FixedUpdate()
@@ -70,6 +72,7 @@ public class PlayerSwim : MonoBehaviour
 
         Vector3 input = swimAction.ReadValue<Vector3>();
         Vector3 move = playerCamera.forward * input.z + playerCamera.right * input.x + playerCamera.up * input.y;
+
         rb.MovePosition(rb.position + move * Time.deltaTime);
 
     }

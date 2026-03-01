@@ -12,7 +12,7 @@ public class PlayerWalk : MonoBehaviour
     public bool canWalk;
 
     [Header("Sound Setting")]
-    public AudioSource audioSource;
+    public AudioSource stepSource;
     public AudioResource[] stepsSounds;
     public float timeBtwSteps;
     bool isWalking;
@@ -34,7 +34,7 @@ public class PlayerWalk : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (!canWalk) return;
+        if (!canWalk) { isWalking = false; return; }
 
         Vector2 input = moveAction.ReadValue<Vector2>();
         if (input != Vector2.zero)
@@ -55,8 +55,8 @@ public class PlayerWalk : MonoBehaviour
             if (isWalking)
             {
                 int stepIndex = Random.Range(0, stepsSounds.Length);
-                audioSource.resource = stepsSounds[stepIndex];
-                audioSource.Play();
+                stepSource.resource = stepsSounds[stepIndex];
+                stepSource.Play();
             }
             yield return new WaitForSeconds(timeBtwSteps / Mathf.Max(speed, 0.01f));
         }
