@@ -71,9 +71,9 @@ public class PlayerSwim : MonoBehaviour
         if (!isDived) {return;}
 
         Vector3 input = swimAction.ReadValue<Vector3>();
-        Vector3 move = playerCamera.forward * input.z + playerCamera.right * input.x + playerCamera.up * input.y;
+        Vector3 move = playerCamera.forward * input.z + playerCamera.right * input.x + Vector3.up * input.y;
 
-        rb.MovePosition(rb.position + move * Time.deltaTime);
+        rb.MovePosition(rb.position + move * speed * Time.deltaTime);
 
     }
 
