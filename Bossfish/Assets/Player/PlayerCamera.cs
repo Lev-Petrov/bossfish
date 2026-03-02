@@ -6,13 +6,21 @@ public class PlayerCamera : MonoBehaviour
     [Header("Look Settings")]
     public InputAction lookAction;
     public Transform cam;
-    public float mouseSensitivity;
+    public float mouseSensitivity = 100f;
+
     Vector2 rotation;
 
     private void OnEnable()
     {
         lookAction.Enable();
         Cursor.lockState = CursorLockMode.Locked;
+
+        // ? Беремо поточний поворот, щоб не перезаписувати його
+        Vector3 bodyAngles = transform.localEulerAngles;
+        Vector3 camAngles = cam.localEulerAngles;
+
+        rotation.x = bodyAngles.y;
+        rotation.y = -camAngles.x;
     }
 
     private void OnDisable()
@@ -23,15 +31,19 @@ public class PlayerCamera : MonoBehaviour
 
     private void Update()
     {
-        // Знаходить напрямок обертання
         Vector2 mouseDelta = lookAction.ReadValue<Vector2>();
-        mouseDelta *= mouseSensitivity;
-        rotation += mouseDelta;
+        mouseDelta *= mouseSensitivity * Time.deltaTime;
 
-        //Обертає камеру
-        rotation.y = Mathf.Clamp(rotation.y, -90, 90);
+        rotation.x += mouseDelta.x;
+        rotation.y += mouseDelta.y;
 
-        transform.localRotation = Quaternion.Euler(0, rotation.x, 0f);
-        cam.localRotation = Quaternion.Euler(-rotation.y, 0, 0);
+        // Обмеження вертикального огляду
+        rotation.y = Mathf.Clamp(rotation.y, -90f, 90f);
+
+        // ? Обертаємо тіло тільки по Y
+        transform.localRotation = Quaternion.Euler(0f, rotation.x, 0f);
+
+        // ? Камеру тільки по X
+        cam.localRotation = Quaternion.Euler(-rotation.y, 0f, 0f);
     }
 }

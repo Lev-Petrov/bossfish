@@ -34,7 +34,7 @@ public class PlayerSwim : MonoBehaviour
         float waterLevel = waterSystems.GetWaterLevel(transform.position);
         depth = waterLevel - transform.position.y;
 
-        if (depth > 0.1f && !isDived)
+        if (depth > 0.2f && !isDived)
         {
             rb.useGravity = false;
             isDived = true;
@@ -42,7 +42,7 @@ public class PlayerSwim : MonoBehaviour
 
             if(playerWalk != null) {playerWalk.canWalk = false;}
         }
-        else if (depth < -0.1f && isDived)
+        else if (depth < -0.2f && isDived)
         {
             rb.useGravity = true;
             isDived = false;
