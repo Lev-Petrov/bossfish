@@ -40,5 +40,4 @@ public class VirtualShip : MonoBehaviour
             ship.AddForceAtPosition(force, contact.point);
         }
     }
-
 }

@@ -419,8 +419,12 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 371917847388126210, guid: 2752dfda205da4e41a61001fa4480586, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 371917847388126210, guid: 2752dfda205da4e41a61001fa4480586, type: 3}
       propertyPath: mouseSensitivity
-      value: 19
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1396777045330118430, guid: 2752dfda205da4e41a61001fa4480586, type: 3}
       propertyPath: m_PlayOnAwake
@@ -431,12 +435,20 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4408287263278602958, guid: 2752dfda205da4e41a61001fa4480586, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4408287263278602958, guid: 2752dfda205da4e41a61001fa4480586, type: 3}
       propertyPath: stepSource
       value: 
       objectReference: {fileID: 1505186031}
     - target: {fileID: 5569181556459070310, guid: 2752dfda205da4e41a61001fa4480586, type: 3}
       propertyPath: speed
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5569181556459070310, guid: 2752dfda205da4e41a61001fa4480586, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5569181556459070310, guid: 2752dfda205da4e41a61001fa4480586, type: 3}
       propertyPath: swimSource
@@ -894,6 +906,35 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &702366072 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4919764256782241596, guid: a8d999ab880007d4d8731e06a9949ad2, type: 3}
+  m_PrefabInstance: {fileID: 469329765891623347}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &702366074 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6829733603622066510, guid: a8d999ab880007d4d8731e06a9949ad2, type: 3}
+  m_PrefabInstance: {fileID: 469329765891623347}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 702366072}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 948759da36b82d24f94eff61571933c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VirtualShip
+--- !u!114 &702366083
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 702366072}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de39641a3048388468a93dc3f5b1411c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::OnBoardObject
+  virtualShip: {fileID: 702366074}
 --- !u!1 &859827545
 GameObject:
   m_ObjectHideFlags: 0
@@ -1188,7 +1229,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4919764256782241596, guid: a8d999ab880007d4d8731e06a9949ad2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 702366083}
   m_SourcePrefab: {fileID: 100100000, guid: a8d999ab880007d4d8731e06a9949ad2, type: 3}
 --- !u!1001 &2637631068757510903
 PrefabInstance:
@@ -1330,7 +1374,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ship
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 540649738907309407, guid: 37fc482fad9ae814da7b265dcc465af1, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

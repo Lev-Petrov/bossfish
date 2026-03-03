@@ -193,6 +193,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::VirtualShip
   rb: {fileID: 202696600629152650}
   ship: {fileID: 0}
+  onTheBoard: []
 --- !u!54 &202696600629152650
 Rigidbody:
   m_ObjectHideFlags: 0
