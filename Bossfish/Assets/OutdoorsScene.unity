@@ -119,6 +119,37 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &14876449
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 14876450}
+  m_Layer: 0
+  m_Name: EnginePoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &14876450
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 14876449}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -1.59, z: -4.43}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2637631068757510918}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &56997438
 GameObject:
   m_ObjectHideFlags: 0
@@ -976,6 +1007,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77fc61db24f8a0a459baf3e5b07fc43b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerWalk
+--- !u!1 &1237754727
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1237754728}
+  m_Layer: 0
+  m_Name: StandPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1237754728
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1237754727}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.65, z: 4.473}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2637631068757510918}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &1505186031 stripped
 AudioSource:
   m_CorrespondingSourceObject: {fileID: 538666946578066562, guid: 2752dfda205da4e41a61001fa4480586, type: 3}
@@ -1066,7 +1128,7 @@ MonoBehaviour:
     m_Flags: 0
   ship: {fileID: 2637631068757510915}
   player: {fileID: 1167174716}
-  standPoint: {fileID: 0}
+  standPoint: {fileID: 1237754728}
   maxRot: 90
   rotSpeed: 100
 --- !u!65 &1735490528
@@ -1396,7 +1458,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 7344525141404734887, guid: 37fc482fad9ae814da7b265dcc465af1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 14876450}
+    - targetCorrespondingSourceObject: {fileID: 7344525141404734887, guid: 37fc482fad9ae814da7b265dcc465af1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1237754728}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 7973392348512685853, guid: 37fc482fad9ae814da7b265dcc465af1, type: 3}
       insertIndex: -1
@@ -1425,7 +1493,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69eb22624829f6f4d98f24197999f63d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ShipController
-  direction: {x: 0, y: 0}
+  enginePoint: {fileID: 14876450}
+  rb: {fileID: 2637631068757510914}
+  waterSystems: {fileID: 135836883}
+  speed: 100
+  input: {x: 0, y: 0}
+--- !u!4 &2637631068757510918 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7344525141404734887, guid: 37fc482fad9ae814da7b265dcc465af1, type: 3}
+  m_PrefabInstance: {fileID: 2637631068757510903}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

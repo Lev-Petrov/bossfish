@@ -39,6 +39,7 @@ public class Helm : Interactive
     {
         playerAtHelm = true;
         player.canWalk = false;
+        player.rb.isKinematic = true;
     }
 
     private void Update()
@@ -49,19 +50,24 @@ public class Helm : Interactive
         {
             playerAtHelm = false;
             player.canWalk = true;
+            player.rb.isKinematic = false;
             return;
         }
+
+        player.rb.position = standPoint.position;
+
 
         Vector2 input = moveAction.ReadValue<Vector2>();
 
         if (input.x != 0)
         {   //Знаходить поточну швидкість обертання
-            currentRot = Mathf.MoveTowards(currentRot, maxRot * input.x, rotSpeed * Time.deltaTime);
+            currentRot = Mathf.MoveTowards(currentRot, maxRot * -input.x, rotSpeed * Time.deltaTime);
             //Розвертає штурвал
-            Vector3 helmRot = new Vector3(-90 + currentRot, 90, -90);
+            Vector3 helmRot = new Vector3(90 - currentRot, 90, -90);
             transform.localRotation = Quaternion.Euler(helmRot);
 
-            ship.direction.x = helmRot.x / 180;
+            ship.input.x = currentRot / 179;
         }
     }
+
 }
